@@ -1,9 +1,15 @@
 package org.openapitools.api;
 
+import io.swagger.annotations.ApiParam;
 import org.openapitools.model.Branches;
+import org.openapitools.model.BranchesWithDistance;
 import org.openapitools.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 @RestController
 @RequestMapping("${openapi.apiDocumentation.base-path:}")
 public class BranchesApiController  {
@@ -22,5 +28,12 @@ public class BranchesApiController  {
             method = RequestMethod.GET)
     public Branches getBranchUsingGET(@PathVariable("id") Long id) {
         return branchService.getBranchById(id);
+    }
+
+    @RequestMapping(value = "/branches",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    public BranchesWithDistance getNearBranchUsingGET(@NotNull @ApiParam(value = "lat", required = true) @Valid @RequestParam(value = "lat", required = true) Double lat, @NotNull @ApiParam(value = "lon", required = true) @Valid @RequestParam(value = "lon", required = true) Double lon) {
+        return branchService.getNearBranchByLatAndLon(lat, lon);
     }
 }
