@@ -1,11 +1,10 @@
 package org.openapitools.service;
 
 import org.modelmapper.ModelMapper;
+import org.openapitools.exception.BranchEntityNotFoundException;
 import org.openapitools.model.Branches;
 import org.openapitools.repository.BranchRepository;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 
 @Service
 public class BranchServiceImpl implements BranchService {
@@ -18,8 +17,8 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public Branches getById(Long blanchId){
-        var branchEntity  = branchRepository.findById(blanchId).orElseThrow(EntityNotFoundException::new);
+    public Branches getBranchById(Long blanchId){
+        var branchEntity  = branchRepository.findById(blanchId).orElseThrow(BranchEntityNotFoundException::new);
         return modelMapper.map(branchEntity, Branches.class);
     }
 }

@@ -21,6 +21,6 @@ public class BranchesApiController  {
             produces = { "application/json" },
             method = RequestMethod.GET)
     public Branches getBranchUsingGET(@PathVariable("id") Long id) {
-        return branchService.getById(id);
+        return branchService.getBranchById(id);
     }
 }
