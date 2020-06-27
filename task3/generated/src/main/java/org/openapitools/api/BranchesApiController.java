@@ -33,7 +33,7 @@ public class BranchesApiController  {
     @RequestMapping(value = "/branches",
             produces = { "application/json" },
             method = RequestMethod.GET)
-    public BranchesWithDistance getNearBranchUsingGET(@NotNull @ApiParam(value = "lat", required = true) @Valid @RequestParam(value = "lat", required = true) Double lat, @NotNull @ApiParam(value = "lon", required = true) @Valid @RequestParam(value = "lon", required = true) Double lon) {
+    public BranchesWithDistance getNearBranchUsingGET(@NotNull @ApiParam(value = "lat", required = true) @Valid @RequestParam(value = "lat") Double lat, @NotNull @ApiParam(value = "lon", required = true) @Valid @RequestParam(value = "lon") Double lon) {
         return branchService.getNearBranchByLatAndLon(lat, lon);
     }
 }
