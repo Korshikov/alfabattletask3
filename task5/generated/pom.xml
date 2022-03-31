@@ -22,7 +22,7 @@
 
 
         <!-- Java 11 dependency versions -->
-        <spring-version>2.2.1.RELEASE</spring-version>
+        <spring-version>2.5.12</spring-version>
         <springfox-version>2.9.2</springfox-version>
         <jaxb-api-version>2.3.1</jaxb-api-version>
         <webjars-swagger-ui-version>3.24.3</webjars-swagger-ui-version>
